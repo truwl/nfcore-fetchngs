@@ -1,0 +1,195 @@
+parameter_meta:
+  fetchngs.samplesheet:
+    description: File containing SRA/ENA/DDBJ/GEO identifiers one per line to download
+      their associated metadata and FastQ files.
+    group: input_output_options
+    help: ''
+    hidden: false
+  fetchngs.input_type:
+    description: Specifies the type of identifier provided via `--input` - available
+      options are 'sra' and 'synapse'.
+    group: input_output_options
+    help: ''
+    hidden: false
+  fetchngs.ena_metadata_fields:
+    description: Comma-separated list of ENA metadata fields to fetch before downloading
+      data.
+    group: input_output_options
+    help: The default list of fields used by the pipeline can be found at the top
+      of the [`bin/sra_ids_to_runinfo.py`](https://github.com/nf-core/fetchngs/blob/master/bin/sra_ids_to_runinfo.py)
+      script within the pipeline repo. This pipeline requires a minimal set of fields
+      to download FastQ files i.e. `'run_accession,experiment_accession,library_layout,fastq_ftp,fastq_md5'`.
+      Full list of accepted metadata fields can be obtained from the [ENA API](https://www.ebi.ac.uk/ena/portal/api/returnFields?dataPortal=ena&format=tsv&result=read_run]).
+    hidden: false
+  fetchngs.sample_mapping_fields:
+    description: Comma-separated list of ENA metadata fields used to create a separate
+      'id_mappings.csv' and 'multiqc_config.yml' with selected fields that can be
+      used to rename samples in general and in MultiQC.
+    group: input_output_options
+    help: ''
+    hidden: false
+  fetchngs.nf_core_pipeline:
+    description: Name of supported nf-core pipeline e.g.  'rnaseq'. A samplesheet
+      for direct use with the pipeline will be created with the appropriate columns.
+    group: input_output_options
+    help: ''
+    hidden: false
+  fetchngs.force_sratools_download:
+    description: Force download FastQ files via sra-tools instead of via the ENA FTP.
+    group: input_output_options
+    help: ''
+    hidden: false
+  fetchngs.skip_fastq_download:
+    description: Only download metadata for public data database ids and don't download
+      the FastQ files.
+    group: input_output_options
+    help: ''
+    hidden: false
+  fetchngs.outdir:
+    description: Path to the output directory where the results will be saved.
+    group: input_output_options
+    help: ''
+    hidden: false
+  fetchngs.email:
+    description: Email address for completion summary.
+    group: input_output_options
+    help: Set this parameter to your e-mail address to get a summary e-mail with details
+      of the run sent to you when the workflow exits. If set in your user config file
+      (`~/.nextflow/config`) then you don't need to specify this on the command line
+      for every run.
+    hidden: false
+  fetchngs.synapse_config:
+    description: Path to Synapse configuration file
+    group: input_output_options
+    help: ''
+    hidden: true
+  fetchngs.custom_config_version:
+    description: Git commit id for Institutional configs.
+    group: institutional_config_options
+    help: ''
+    hidden: true
+  fetchngs.custom_config_base:
+    description: Base directory for Institutional configs.
+    group: institutional_config_options
+    help: If you're running offline, Nextflow will not be able to fetch the institutional
+      config files from the internet. If you don't need them, then this is not a problem.
+      If you do need them, you should download the files from the repo and tell Nextflow
+      where to find them with this parameter.
+    hidden: true
+  fetchngs.config_profile_name:
+    description: Institutional config name.
+    group: institutional_config_options
+    help: ''
+    hidden: true
+  fetchngs.config_profile_description:
+    description: Institutional config description.
+    group: institutional_config_options
+    help: ''
+    hidden: true
+  fetchngs.config_profile_contact:
+    description: Institutional config contact information.
+    group: institutional_config_options
+    help: ''
+    hidden: true
+  fetchngs.config_profile_url:
+    description: Institutional config URL link.
+    group: institutional_config_options
+    help: ''
+    hidden: true
+  fetchngs.max_cpus:
+    description: Maximum number of CPUs that can be requested for any single job.
+    group: max_job_request_options
+    help: Use to set an upper-limit for the CPU requirement for each process. Should
+      be an integer e.g. `--max_cpus 1`
+    hidden: true
+  fetchngs.max_memory:
+    description: Maximum amount of memory that can be requested for any single job.
+    group: max_job_request_options
+    help: Use to set an upper-limit for the memory requirement for each process. Should
+      be a string in the format integer-unit e.g. `--max_memory '8.GB'`
+    hidden: true
+  fetchngs.max_time:
+    description: Maximum amount of time that can be requested for any single job.
+    group: max_job_request_options
+    help: Use to set an upper-limit for the time requirement for each process. Should
+      be a string in the format integer-unit e.g. `--max_time '2.h'`
+    hidden: true
+  fetchngs.help:
+    description: Display help text.
+    group: generic_options
+    help: ''
+    hidden: true
+  fetchngs.email_on_fail:
+    description: Email address for completion summary, only when pipeline fails.
+    group: generic_options
+    help: An email address to send a summary email to when the pipeline is completed
+      - ONLY sent if the pipeline does not exit successfully.
+    hidden: true
+  fetchngs.plaintext_email:
+    description: Send plain-text email instead of HTML.
+    group: generic_options
+    help: ''
+    hidden: true
+  fetchngs.monochrome_logs:
+    description: Do not use coloured log outputs.
+    group: generic_options
+    help: ''
+    hidden: true
+  fetchngs.tracedir:
+    description: Directory to keep pipeline Nextflow logs and reports.
+    group: generic_options
+    help: ''
+    hidden: true
+  fetchngs.validate_params:
+    description: Boolean whether to validate parameters against the schema at runtime
+    group: generic_options
+    help: ''
+    hidden: true
+  fetchngs.show_hidden_params:
+    description: Show all params when using `--help`
+    group: generic_options
+    help: By default, parameters set as _hidden_ in the schema are not shown on the
+      command line when a user runs with `--help`. Specifying this option will tell
+      the pipeline to show all parameters.
+    hidden: true
+  fetchngs.enable_conda:
+    description: Run this workflow with Conda. You can also use '-profile conda' instead
+      of providing this parameter.
+    group: generic_options
+    help: ''
+    hidden: true
+parameter_group:
+  input_output_options:
+    description: Define where the pipeline should find input data and save output
+      data.
+    help: null
+    title: Input/output options
+  institutional_config_options:
+    description: Parameters used to describe centralised config profiles. These should
+      not be edited.
+    help: The centralised nf-core configuration profiles use a handful of pipeline
+      parameters to describe themselves. This information is then printed to the Nextflow
+      log when you run a pipeline. You should not need to change these values when
+      you run a pipeline.
+    title: Institutional config options
+  max_job_request_options:
+    description: Set the top limit for requested resources for any single job.
+    help: 'If you are running on a smaller system, a pipeline step requesting more
+      resources than are available may cause the Nextflow to stop the run with an
+      error. These options allow you to cap the maximum resources requested by any
+      single job so that the pipeline will run on your system.
+
+
+      Note that you can not _increase_ the resources requested by any job using these
+      options. For that you will need your own configuration file. See [the nf-core
+      website](https://nf-co.re/usage/configuration) for details.'
+    title: Max job request options
+  generic_options:
+    description: Less common options for the pipeline, typically set in a config file.
+    help: 'These options are common to all nf-core pipelines and allow you to customise
+      some of the core preferences for how the pipeline runs.
+
+
+      Typically these options would be set in a Nextflow config file loaded for all
+      pipeline runs, such as `~/.nextflow/config`.'
+    title: Generic options
