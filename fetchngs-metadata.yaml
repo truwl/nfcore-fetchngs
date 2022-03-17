@@ -1,0 +1,19 @@
+name: nf.core fetchngs
+identifier: WF_2808e9.42
+description: Pipeline to fetch metadata and raw FastQ files from public and private
+  databases
+softwareVersion:
+  versionName: '1.5'
+metadataStatus: Released
+workflowStatus: Released
+workflowFile: fetchngs.wdl
+repoName: nfcore-fetchngs
+gitTag: master
+inputsTemplate: inputs.json
+executable: true
+current: true
+codeRepository:
+  URL: https://github.com/truwl/nfcore-fetchngs/
+WebSite:
+- URL: https://github.com/nf-core/fetchngs
+  name: nf-core/fetchngs
